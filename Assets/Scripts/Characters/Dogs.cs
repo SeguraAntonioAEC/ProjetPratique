@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Dogs : MonoBehaviour
 {
-    public Rigidbody m_dogBody;
+    protected Rigidbody m_dogBody;
+
+    protected Animator m_dogAnimator;
 
     //Dogs movement and physics:
     [SerializeField] protected float m_dogSpeed;
@@ -25,33 +27,22 @@ public class Dogs : MonoBehaviour
 
     protected bool m_isInWater = false;
 
-    protected bool m_isSafe = true;
-
-    protected Vector3 m_waterSurfacePos;
-
-    // Water Behaviour variables:
-
-    [SerializeField] protected float m_submersionThreshold;
-
-    [SerializeField] protected float m_dispalcementRate;
-    
-
+    protected bool m_isSafe = true;   
 
     void Awake()
     {
         m_dogBody = GetComponent<Rigidbody>();
+        m_dogAnimator = GetComponent<Animator>();
+        m_lastSafePosition = transform.position;
     }    
 
     protected virtual void Update()
-    {
-        
+    {        
         PositionReset();
-        BasicMovement();
-        WaterMovement();
+        BasicMovement();        
         Jump();
         Sprint();
         SurfaceCheck();
-
     }
     public void BasicMovement()
     {
@@ -62,28 +53,19 @@ public class Dogs : MonoBehaviour
         velocity.x = m_dogSpeed * horizontalInput;
         velocity.z = m_dogSpeed * verticalInput;
         m_dogBody.velocity = velocity;
-        if (m_dogBody.velocity.x > 0.0f || m_dogBody.velocity.x < 0.0f)
+        float movementMagnitude = Vector3.Magnitude(m_dogBody.velocity);
+        if (movementMagnitude > 0.0f)
         {
+            m_dogBody.transform.LookAt(m_dogBody.transform.position + velocity);
             m_isMoving = true;
+
         }
         else
         {
             m_isMoving = false; 
         }
-    }
-
-    public void WaterMovement()
-    {
-        if (!m_dogBody) return;
-        if (m_isInWater)
-        {
-            if (m_dogBody.position.y < m_waterSurfacePos.y)
-            {
-                float displacementMultiplier = Mathf.Clamp01(-transform.position.y / m_submersionThreshold) * m_dispalcementRate;
-                m_dogBody.AddForce(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displacementMultiplier, 0f), ForceMode.Acceleration);
-            }            
-        }
-    }     
+        m_dogAnimator.SetFloat("Movement_f", movementMagnitude);
+    }    
     public void Sprint()
     {
         if (!m_dogBody) return;
@@ -117,14 +99,12 @@ public class Dogs : MonoBehaviour
             {
                 SetLastSafePosition();
                 m_isGrounded = true;
-                m_isInWater = false;
-                m_waterSurfacePos = new Vector3(-1.0f, -1.0f, -30.0f);
+                m_isInWater = false;               
             }
             if (surfaceInfo.collider.tag == "Water")
             {
                 m_isInWater = true;
-                m_isGrounded = false;
-                m_waterSurfacePos = surfaceInfo.collider.transform.position;
+                m_isGrounded = false;                
             }
             Debug.DrawRay(transform.position, Vector3.down, Color.red, 5.0f);
         }       
