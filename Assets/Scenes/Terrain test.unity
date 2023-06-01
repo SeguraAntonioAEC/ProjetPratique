@@ -202,14 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e10451c5d436f541bf26a967211832b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dogBody: {fileID: 50384481}
   m_dogSpeed: 4
   m_dogSwimSpeed: 3
   m_jumpForce: 4
   m_swimMaxDistance: 5
   m_rayLength: 0.75
-  m_submersionThreshold: 0
-  m_dispalcementRate: 0
   m_bashStrenght: 0
 --- !u!4 &50384480 stripped
 Transform:
@@ -1233,11 +1230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.08
+      value: 10.355
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1476,14 +1473,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514486140}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.25
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!4 &514486142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
@@ -1501,16 +1498,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34345d308a5e4924ab115ab797ec88a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dogBody: {fileID: 514486141}
   m_dogSpeed: 4.5
   m_dogSwimSpeed: 5
   m_jumpForce: 4.5
   m_swimMaxDistance: 10
   m_rayLength: 0.25
-  m_submersionThreshold: 0
-  m_dispalcementRate: 0
---- !u!64 &514486144
-MeshCollider:
+--- !u!136 &514486145
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1519,10 +1513,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300034, guid: c09f8524a6a9dee4a9fb53005c279541, type: 3}
+  m_Radius: 0.38750222
+  m_Height: 0.9432268
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.3538631, z: -0.0048060417}
 --- !u!1 &543611509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,14 +3040,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79952058dfa8307419dfe967217bb27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dogBody: {fileID: 978014983}
   m_dogSpeed: 6
   m_dogSwimSpeed: 3.5
   m_jumpForce: 5
   m_swimMaxDistance: 5
   m_rayLength: 0.25
-  m_submersionThreshold: 0
-  m_dispalcementRate: 0
   m_lightJumpRayLength: 0.75
   m_lightJumpForce: 6
 --- !u!64 &978014986
