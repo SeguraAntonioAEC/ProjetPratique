@@ -1,7 +1,7 @@
 Shader "LowPolyWater/WaterShaded" {
 Properties { 
 
-	_BaseColor ("Base color", COLOR)  = ( .54, .95, .99, 0.5) 
+	_BaseColor ("Base color", COLOR)  = ( .54, .95, .99, 1) 
 	_SpecColor ("Specular Material Color", Color) = (1,1,1,1) 
     _Shininess ("Shininess", Float) = 10
 	_ShoreTex ("Shore & Foam texture ", 2D) = "black" {} 

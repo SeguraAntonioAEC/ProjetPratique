@@ -37,7 +37,7 @@ public class PiggySelector : MonoBehaviour
             else 
             {
                 m_dogInUse -= 1;
-            }
+            }            
             Swap();
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -62,6 +62,7 @@ public class PiggySelector : MonoBehaviour
         {
             if (m_dogsList[i] != m_dog)
             {
+                m_dogsList[i].GetComponent<Dogs>();
                 m_dogsList[i].GetComponent<Dogs>().enabled = false;
             }
         }

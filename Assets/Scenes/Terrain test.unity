@@ -206,7 +206,8 @@ MonoBehaviour:
   m_dogSwimSpeed: 3
   m_jumpForce: 4
   m_swimMaxDistance: 5
-  m_rayLength: 0.75
+  m_rayLength: 0.25
+  m_slopeRay: 0.25
   m_bashStrenght: 0
 --- !u!4 &50384480 stripped
 Transform:
@@ -229,8 +230,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!64 &50384482
-MeshCollider:
+--- !u!135 &50384482
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -239,10 +240,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300016, guid: c09f8524a6a9dee4a9fb53005c279541, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.48, z: 0}
 --- !u!1001 &99800936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,7 +799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181498904}
   m_LocalRotation: {x: 0.44098133, y: 0.23409401, z: -0.12030798, w: 0.85805684}
-  m_LocalPosition: {x: 18.16, y: 5.91, z: 6.99}
+  m_LocalPosition: {x: 10.44, y: 3.98, z: 8.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1781050996}
@@ -1225,16 +1225,28 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.82
+      value: 11.52
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.78
+      value: 0.029999971
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.355
+      value: 10.951
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1473,14 +1485,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514486140}
   serializedVersion: 2
-  m_Mass: 0.25
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!4 &514486142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
@@ -1503,8 +1515,9 @@ MonoBehaviour:
   m_jumpForce: 4.5
   m_swimMaxDistance: 10
   m_rayLength: 0.25
---- !u!136 &514486145
-CapsuleCollider:
+  m_slopeRay: 0
+--- !u!135 &514486145
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1513,10 +1526,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.38750222
-  m_Height: 0.9432268
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.3538631, z: -0.0048060417}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.48, z: 0}
 --- !u!1 &543611509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,7 +2017,7 @@ GameObject:
   - component: {fileID: 684772889}
   m_Layer: 0
   m_Name: WaterPlane
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2659,16 +2671,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.32
+      value: 11.57
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000009536743
+      value: 0.014
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.30895
+      value: 9.94
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3045,10 +3069,11 @@ MonoBehaviour:
   m_jumpForce: 5
   m_swimMaxDistance: 5
   m_rayLength: 0.25
+  m_slopeRay: 0
   m_lightJumpRayLength: 0.75
   m_lightJumpForce: 6
---- !u!64 &978014986
-MeshCollider:
+--- !u!135 &978014986
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3057,10 +3082,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300024, guid: c09f8524a6a9dee4a9fb53005c279541, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.48, z: 0}
 --- !u!1001 &993386115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3449,7 +3473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045064900}
   m_LocalRotation: {x: 0.44098133, y: 0.23409401, z: -0.12030798, w: 0.85805684}
-  m_LocalPosition: {x: 18.16, y: 5.91, z: 6.99}
+  m_LocalPosition: {x: 10.44, y: 3.98, z: 8.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5399,7 +5423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: -2.9699993, y: 5.44, z: -3.6500006}
+  m_FollowOffset: {x: -2, y: 8, z: -4}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -6115,15 +6139,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.5
+      value: 11.629
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0005992949
+      value: 0.024
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.729953
+      value: 9.29
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6393,7 +6417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141628145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.8, y: 2.83, z: 9.1}
+  m_LocalPosition: {x: 41.8, y: 2.63, z: 9.1}
   m_LocalScale: {x: 17.491, y: 1, z: 17.467}
   m_Children: []
   m_Father: {fileID: 0}

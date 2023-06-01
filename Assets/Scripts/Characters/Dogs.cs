@@ -19,6 +19,8 @@ public class Dogs : MonoBehaviour
 
     [SerializeField] protected float m_rayLength;
 
+    [SerializeField] protected float m_slopeRay; 
+
     protected Vector3 m_lastSafePosition;
 
     protected bool m_isGrounded = true;
@@ -43,28 +45,30 @@ public class Dogs : MonoBehaviour
         Jump();
         Sprint();
         SurfaceCheck();
+       
     }
     public void BasicMovement()
     {
-        if (!m_dogBody) return;
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 velocity = m_dogBody.velocity;
-        velocity.x = m_dogSpeed * horizontalInput;
-        velocity.z = m_dogSpeed * verticalInput;
-        m_dogBody.velocity = velocity;
-        float movementMagnitude = Vector3.Magnitude(m_dogBody.velocity);
-        if (movementMagnitude > 0.0f)
-        {
-            m_dogBody.transform.LookAt(m_dogBody.transform.position + velocity);
-            m_isMoving = true;
-
-        }
-        else
-        {
-            m_isMoving = false; 
-        }
-        m_dogAnimator.SetFloat("Movement_f", movementMagnitude);
+        if (!m_dogBody) return;        
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 velocity = m_dogBody.velocity;
+            velocity.x = m_dogSpeed * horizontalInput;
+            velocity.z = m_dogSpeed * verticalInput;
+            m_dogBody.velocity = velocity;
+            float movementMagnitude = (m_dogBody.velocity - Vector3.up * m_dogBody.velocity.y).magnitude;
+            if (movementMagnitude > 0.0f)
+            {
+                Vector3 tempVector = m_dogBody.transform.position + velocity;
+                tempVector.y = m_dogBody.transform.position.y;
+                m_dogBody.transform.LookAt(tempVector);
+                m_isMoving = true;
+            }
+            else
+            {
+                m_isMoving = false;
+            }
+            m_dogAnimator.SetFloat("Movement_f", movementMagnitude);        
     }    
     public void Sprint()
     {
@@ -86,28 +90,49 @@ public class Dogs : MonoBehaviour
 
     public void SurfaceCheck()
     {
-        RaycastHit surfaceInfo;
-        Ray checkSurfaceRay = new Ray(transform.position, Vector3.down);
-        if(Physics.Raycast(checkSurfaceRay, out surfaceInfo ,m_rayLength))
-        {
-            if (surfaceInfo.collider == false)
-            {
-                m_isGrounded = false;
-                m_isInWater = false;
-            }
-            if (surfaceInfo.collider.tag == "Level Ground")
-            {
-                SetLastSafePosition();
-                m_isGrounded = true;
-                m_isInWater = false;               
-            }
-            if (surfaceInfo.collider.tag == "Water")
-            {
-                m_isInWater = true;
-                m_isGrounded = false;                
-            }
-            Debug.DrawRay(transform.position, Vector3.down, Color.red, 5.0f);
-        }       
+        //RaycastHit surfaceInfo;
+        //Ray checkSurfaceRay = new Ray(transform.position - Vector3.down * transform.position.y, Vector3.down);
+        //Ray checkSlope = new Ray(transform.position - Vector3.down * transform.position.y,transform.forward);
+        //if(Physics.Raycast(checkSurfaceRay, out surfaceInfo ,m_rayLength))
+        //{
+        //    if (surfaceInfo.collider == false)
+        //    {
+        //        m_isGrounded = false;
+        //        m_isInWater = false;
+        //    }
+        //    if (surfaceInfo.collider.tag == "Level Ground")
+        //    {
+        //        SetLastSafePosition();
+        //        m_isGrounded = true;
+        //        m_isInWater = false;               
+        //    }
+        //    if (surfaceInfo.collider.tag == "Water")
+        //    {
+        //        m_isInWater = true;
+        //        m_isGrounded = false;                
+        //    }
+        //    Debug.DrawRay(transform.position, Vector3.down, Color.red, 5.0f);
+        //}
+        //if (Physics.Raycast(checkSlope, out surfaceInfo, m_slopeRay))
+        //{
+        //    if (surfaceInfo.collider == false)
+        //    {
+        //        m_isGrounded = false;
+        //        m_isInWater = false;
+        //    }
+        //    if (surfaceInfo.collider.tag == "Level Ground")
+        //    {
+        //        SetLastSafePosition();
+        //        m_isGrounded = true;
+        //        m_isInWater = false;
+        //    }
+        //    if (surfaceInfo.collider.tag == "Water")
+        //    {
+        //        m_isInWater = true;
+        //        m_isGrounded = false;
+        //    }
+        //    Debug.DrawRay(transform.position -Vector3.back, transform.forward, Color.red, 5.0f);
+        //}
     }
     public void Bite()
     {
@@ -153,6 +178,20 @@ public class Dogs : MonoBehaviour
         if (m_isGrounded && transform.position.y >= 0.0f)
         {
             m_lastSafePosition = transform.position; 
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Level Ground")
+        {
+            m_isGrounded = true;
+            m_isSafe = true;
+        }
+        if (collision.gameObject.tag == "Water")
+        {
+            m_isInWater = true;
+            m_isGrounded = false;
         }
     }
 }
