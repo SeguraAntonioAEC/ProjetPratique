@@ -6,7 +6,8 @@ public class FakeBuoyancy : MonoBehaviour
 {
     private Transform m_waterTransform;
     private float m_initialPosY;
-    
+    [SerializeField]private float m_OscillationTime = 0.01f;
+    [SerializeField] private float m_oscillationRate= 5f;
 
     
     void Start()
@@ -18,7 +19,7 @@ public class FakeBuoyancy : MonoBehaviour
     void Update()
     {
         float posY = m_waterTransform.position.y;
-        posY = Mathf.PingPong(Time.time / 5f, 0.1f);
+        posY = Mathf.PingPong(Time.time / m_oscillationRate, m_OscillationTime);
         m_waterTransform.position = new Vector3(m_waterTransform.position.x, m_initialPosY + posY, m_waterTransform.position.z);
     }
 }

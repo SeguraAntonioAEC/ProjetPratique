@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ec7d4dfa0f948a74abc5009ad29351d0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Grooven
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 143d1d462f93e484983f38a2836e6f9d, type: 3}
+  - {fileID: 12800000, guid: bc11fcdc1e4c95c488cf83c6064013ca, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

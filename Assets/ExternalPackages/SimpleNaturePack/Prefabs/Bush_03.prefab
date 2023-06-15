@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 38335279661274915}
   - component: {fileID: 38335279660144099}
   - component: {fileID: 2776802145740982909}
+  - component: {fileID: 7467290956596926606}
   m_Layer: 0
   m_Name: Bush_03
   m_TagString: Untagged
@@ -96,3 +97,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7b5a098d913a3c74692a2a9963dbd3ba, type: 3}
+--- !u!205 &7467290956596926606
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38335279662140195}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.07779813, y: 0.23830992, z: -0.14249325}
+  m_Size: 1.5134847
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.019529661
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 38335279660144099}
+  - screenRelativeHeight: 0.012997608
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.0062280237
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
