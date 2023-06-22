@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gym.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: d48dd844ce5920c468905c1cdba28f71
   - enabled: 1
     path: Assets/Scenes/Terrain test.unity
     guid: e61117f9ebcb2624e9145a0f9d8f79df

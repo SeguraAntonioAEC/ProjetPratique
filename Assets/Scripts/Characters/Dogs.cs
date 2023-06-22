@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dogs : MonoBehaviour
 {
+    private PauseMenuUI m_menuUI;
+
     protected Rigidbody m_dogBody;
 
     protected Animator m_dogAnimator;
@@ -36,6 +38,7 @@ public class Dogs : MonoBehaviour
         m_dogBody = GetComponent<Rigidbody>();
         m_dogAnimator = GetComponent<Animator>();
         m_lastSafePosition = transform.position;
+        m_menuUI = FindObjectOfType<PauseMenuUI>();
     }    
 
     protected virtual void Update()
@@ -44,8 +47,7 @@ public class Dogs : MonoBehaviour
         BasicMovement();        
         Jump();
         Sprint();
-        SurfaceCheck();
-       
+        SurfaceCheck();       
     }
     public void BasicMovement()
     {
@@ -73,7 +75,7 @@ public class Dogs : MonoBehaviour
     public void Sprint()
     {
         if (!m_dogBody) return;
-        if (m_isMoving && Input.GetKey(KeyCode.LeftShift))
+        if (m_isMoving && Input.GetKeyDown(KeyCode.LeftShift))
         {
             m_dogBody.velocity = m_dogBody.velocity * 2.0f;
         }
