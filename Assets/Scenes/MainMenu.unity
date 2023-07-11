@@ -2001,6 +2001,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8462323049501526594, guid: d4e38d9c243ec6349b6629269a870e03, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462323049501526594, guid: d4e38d9c243ec6349b6629269a870e03, type: 3}
+      propertyPath: audioClips.Array.data[9].name
+      value: Digging Sound
+      objectReference: {fileID: 0}
     - target: {fileID: 8462323049501526595, guid: d4e38d9c243ec6349b6629269a870e03, type: 3}
       propertyPath: m_Name
       value: AudioManager

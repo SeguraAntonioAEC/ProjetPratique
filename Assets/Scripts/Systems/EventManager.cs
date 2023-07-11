@@ -5,7 +5,7 @@ using System;
 
 public class EventManager : MonoBehaviour
 {
-    private Dictionary<string, Action> eventsDictionnary;
+    private Dictionary<string, Action<Dictionary<string, object>>> eventsDictionnary;
 
     private static EventManager eventManager;
 
@@ -35,21 +35,48 @@ public class EventManager : MonoBehaviour
     {
         if (eventsDictionnary == null)
         {
-            eventsDictionnary = new Dictionary<string, Action>();
+            eventsDictionnary = new Dictionary<string, Action<Dictionary<string, object>>>();
         }
     }
 
 
-    void StartListening()
+    void StartListening(string eventName, Action listener)
     {
+        Action thisEvent;
+        if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent += listener;
+            managerInstance.eventsDictionnary[eventName] = thisEvent;
+        }
+        else
+        {
+            thisEvent += listener;
+            managerInstance.eventsDictionnary.Add(eventName, thisEvent);
+        }
     }
 
-    void StopListening()
-    { 
+    void StopListening(string eventName, Action listener)
+    {
+        if (!eventManager)
+        {
+            return;
+        }
+
+        Action thisEvent;
+        if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent -= listener;
+            managerInstance.eventsDictionnary[eventName] = thisEvent;
+        }
     }
 
-    void TriggerAction()
-    { 
+    void TriggerAction(string eventName)
+    {
+        Action thisEvent;
+        if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent.Invoke();
+        }
     }
         
 }
