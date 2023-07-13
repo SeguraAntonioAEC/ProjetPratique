@@ -40,9 +40,9 @@ public class EventManager : MonoBehaviour
     }
 
 
-    void StartListening(string eventName, Action listener)
+    void StartListening(string eventName, Action<Dictionary<string,object>> listener)
     {
-        Action thisEvent;
+        Action<Dictionary<string,object>> thisEvent;
         if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
         {
             thisEvent += listener;
@@ -55,14 +55,14 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    void StopListening(string eventName, Action listener)
+    void StopListening(string eventName, Action<Dictionary<string, object>> listener)
     {
         if (!eventManager)
         {
             return;
         }
 
-        Action thisEvent;
+        Action<Dictionary<string, object>> thisEvent;
         if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
         {
             thisEvent -= listener;
@@ -70,12 +70,12 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    void TriggerAction(string eventName)
+    void TriggerAction(string eventName, Dictionary<string, object> listener)
     {
-        Action thisEvent;
+        Action<Dictionary<string, object>> thisEvent;
         if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
-        {
-            thisEvent.Invoke();
+        {            
+            thisEvent?.Invoke(listener);
         }
     }
         

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class PiggySelector : MonoBehaviour
+public class DogSelector : MonoBehaviour
 {
     
     public Transform m_dog;
