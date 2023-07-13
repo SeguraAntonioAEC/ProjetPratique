@@ -202,7 +202,7 @@ public class POLYGON_DogAnimationController : MonoBehaviour
         children = GetComponentsInChildren<Transform>();
         for (int x = 0; x < children.Length; x++) // Search for dog names
         {
-            if (children[x].name.Contains("Dogs"))
+            if (children[x].name.Contains("DogStateMachine"))
             {
                 getDogName = children[x];
             }

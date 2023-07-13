@@ -44,7 +44,7 @@ public class POLYGON_DogPrefabs : MonoBehaviour
 	private Transform[] children; // All Dog Meshes in parent object
 	private Transform getDogName; // Dog Parent
 	private Transform DogTransform; // Dog Children
-	private List<GameObject> NoAttachDogs = new List<GameObject>(); // Dogs without attachments
+	private List<GameObject> NoAttachDogs = new List<GameObject>(); // DogStateMachine without attachments
 	static int DogCounter; // dog index no
 	static int counter; // current counter for dog attachment
 	private GUIStyle guiStyle = new GUIStyle(); // GUI style for overlay
@@ -59,7 +59,7 @@ public class POLYGON_DogPrefabs : MonoBehaviour
 		for (int x = 0; x < children.Length; x++)
 		{
 			Transform child = children[x];
-			if (child.name.Contains("Dogs")) // Assign dogs with attachments
+			if (child.name.Contains("DogStateMachine")) // Assign dogs with attachments
 			{
 				getDogName = child;
 			}
@@ -97,7 +97,7 @@ public class POLYGON_DogPrefabs : MonoBehaviour
 		AllDogAttach.Add(Wolf); //25
 		AllDogAttach.Add(ZombieDoberman); //26
 		AllDogAttach.Add(ZombieGermanShepherd);//27
-		DogTransform = getDogName; // Set Dog Transform to Dogs
+		DogTransform = getDogName; // Set Dog Transform to DogStateMachine
 		DogCounter = 6; // Set Dog counter to 0 on startup
 		counter = 0; // Set attachment counter to 0 on startup
 		setInvisible(1);
@@ -266,7 +266,7 @@ public class POLYGON_DogPrefabs : MonoBehaviour
 	}
 	private void setInvisible(int visibleMarker) // 1 = Dog, 2 = Attach, 3 = Both
 	{
-		if (visibleMarker == 1 || visibleMarker == 3) // Turn off All Dogs
+		if (visibleMarker == 1 || visibleMarker == 3) // Turn off All DogStateMachine
 		{
 			for (int y = 0; y < DogTransform.childCount; y++)
 			{

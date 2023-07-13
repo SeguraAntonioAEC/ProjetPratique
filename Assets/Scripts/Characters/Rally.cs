@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rally : Dogs
+public class Rally : DogStateMachine
 {
     [SerializeField] private float m_lightJumpRayLength;
     [SerializeField] private float m_lightJumpForce;

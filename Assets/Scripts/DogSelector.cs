@@ -57,13 +57,13 @@ public class DogSelector : MonoBehaviour
     public void Swap()
     {
         m_dog = m_dogsList[m_dogInUse];
-        m_dog.GetComponent<Dogs>().enabled = true;
+        m_dog.GetComponent<DogStateMachine>().enabled = true;
         for (int i = 0; i < m_dogsList.Count; i++)
         {
             if (m_dogsList[i] != m_dog)
             {
-                m_dogsList[i].GetComponent<Dogs>();
-                m_dogsList[i].GetComponent<Dogs>().enabled = false;
+                m_dogsList[i].GetComponent<DogStateMachine>();
+                m_dogsList[i].GetComponent<DogStateMachine>().enabled = false;
             }
         }
         m_followCam.LookAt = m_dog;

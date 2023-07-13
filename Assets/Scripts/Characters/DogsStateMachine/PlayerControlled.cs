@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dogs : MonoBehaviour
+public class PlayerControlled : DogState
 {
-    private PauseMenuUI m_menuUI;
-
     protected Rigidbody m_dogBody;
 
     protected Animator m_dogAnimator;
 
-    //Dogs movement and physics:
+    //DogStateMachine movement and physics:
     [SerializeField] protected float m_dogSpeed;
 
     [SerializeField] protected float m_dogSwimSpeed;
@@ -21,7 +19,7 @@ public class Dogs : MonoBehaviour
 
     [SerializeField] protected float m_rayLength;
 
-    [SerializeField] protected float m_slopeRay; 
+    [SerializeField] protected float m_slopeRay;
 
     protected Vector3 m_lastSafePosition;
 
@@ -31,47 +29,46 @@ public class Dogs : MonoBehaviour
 
     protected bool m_isInWater = false;
 
-    protected bool m_isSafe = true;   
+    protected bool m_isSafe = true;
 
-    void Awake()
+    public PlayerControlled(DogStateMachine stateMachine) : base(stateMachine)
     {
-        m_dogBody = GetComponent<Rigidbody>();
-        m_dogAnimator = GetComponent<Animator>();
-        m_lastSafePosition = transform.position;
-        m_menuUI = FindObjectOfType<PauseMenuUI>();
-    }    
+        m_dogBody = m_stateMachine.GetComponent<Rigidbody>();
+        m_dogAnimator =m_stateMachine.GetComponent<Animator>();
+        m_lastSafePosition = m_stateMachine.transform.position;
+    }
 
-    protected virtual void Update()
-    {        
+    public override void Execute()
+    {
         PositionReset();
-        BasicMovement();        
+        BasicMovement();
         Jump();
         Sprint();
-        SurfaceCheck();       
+        SurfaceCheck();
     }
     public void BasicMovement()
     {
-        if (!m_dogBody) return;        
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-            Vector3 velocity = m_dogBody.velocity;
-            velocity.x = m_dogSpeed * horizontalInput;
-            velocity.z = m_dogSpeed * verticalInput;
-            m_dogBody.velocity = velocity;
-            float movementMagnitude = (m_dogBody.velocity - Vector3.up * m_dogBody.velocity.y).magnitude;
-            if (movementMagnitude > 0.0f)
-            {
-                Vector3 tempVector = m_dogBody.transform.position + velocity;
-                tempVector.y = m_dogBody.transform.position.y;
-                m_dogBody.transform.LookAt(tempVector);
-                m_isMoving = true;
-            }
-            else
-            {
-                m_isMoving = false;
-            }
-            m_dogAnimator.SetFloat("Movement_f", movementMagnitude);        
-    }    
+        if (!m_dogBody) return;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 velocity = m_dogBody.velocity;
+        velocity.x = m_dogSpeed * horizontalInput;
+        velocity.z = m_dogSpeed * verticalInput;
+        m_dogBody.velocity = velocity;
+        float movementMagnitude = (m_dogBody.velocity - Vector3.up * m_dogBody.velocity.y).magnitude;
+        if (movementMagnitude > 0.0f)
+        {
+            Vector3 tempVector = m_dogBody.transform.position + velocity;
+            tempVector.y = m_dogBody.transform.position.y;
+            m_dogBody.transform.LookAt(tempVector);
+            m_isMoving = true;
+        }
+        else
+        {
+            m_isMoving = false;
+        }
+        m_dogAnimator.SetFloat("Movement_f", movementMagnitude);
+    }
     public void Sprint()
     {
         if (!m_dogBody) return;
@@ -163,23 +160,23 @@ public class Dogs : MonoBehaviour
         //set on click enter 
         //check if is in range 
     }
-    public void PositionReset() 
+    public void PositionReset()
     {
-        if (transform.position.y <= -0.5f)
+        if (m_stateMachine.transform.position.y <= -0.5f)
         {
             m_isSafe = false;
         }
-        if (m_isSafe == false && transform.position.y <= -1.0f)
+        if (m_isSafe == false && m_stateMachine.transform.position.y <= -1.0f)
         {
-            transform.position = m_lastSafePosition;
+            m_stateMachine.transform.position = m_lastSafePosition;
             m_isSafe = true;
         }
     }
     public void SetLastSafePosition()
-    {        
-        if (m_isGrounded && transform.position.y >= 0.0f)
+    {
+        if (m_isGrounded && m_stateMachine.transform.position.y >= 0.0f)
         {
-            m_lastSafePosition = transform.position; 
+            m_lastSafePosition = m_stateMachine.transform.position;
         }
     }
 
@@ -197,21 +194,4 @@ public class Dogs : MonoBehaviour
         }
     }
 }
-
-  
-
-   
-            
-
-    
-
-     
-
-
-
-
-    
-
-
-        
 

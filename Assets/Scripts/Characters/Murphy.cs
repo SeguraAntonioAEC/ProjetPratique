@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Murphy : Dogs
+public class Murphy : DogStateMachine
 {
    [SerializeField] private float m_bashStrenght;
     protected override void  Update()

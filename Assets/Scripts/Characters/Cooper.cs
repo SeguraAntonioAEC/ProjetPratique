@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cooper : Dogs
+public class Cooper : DogStateMachine
 {
     protected override void Update()
     {

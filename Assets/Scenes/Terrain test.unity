@@ -248,7 +248,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50384478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e10451c5d436f541bf26a967211832b, type: 3}
   m_Name: 
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514486140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34345d308a5e4924ab115ab797ec88a4, type: 3}
   m_Name: 
@@ -2403,6 +2403,24 @@ MonoBehaviour:
   m_dogSwimSpeed: 5
   m_jumpForce: 4.5
   m_swimMaxDistance: 10
+  m_rayLength: 0.25
+  m_slopeRay: 0.25
+--- !u!114 &514486144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514486140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b9a5ec55d370e42af5f58e78bd3a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dogSpeed: 3
+  m_dogSwimSpeed: 3
+  m_jumpForce: 3
+  m_swimMaxDistance: 3
   m_rayLength: 0.25
   m_slopeRay: 0
 --- !u!135 &514486145
@@ -4699,7 +4717,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978014982}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79952058dfa8307419dfe967217bb27e, type: 3}
   m_Name: 
