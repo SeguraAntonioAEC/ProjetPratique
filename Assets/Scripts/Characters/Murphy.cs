@@ -1,25 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class Murphy : DogStateMachine
+public class Murphy : Dog
 {
-   [SerializeField] private float m_bashStrenght;
-    protected override void  Update()
-    {        
-        base.Update();
-        Bash();            
-    }
-       
-    // Changer la velocité par magnitude de mouvement 
-
-    private void Bash()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.F) && m_isGrounded == true  && m_isInWater == false && m_dogBody.velocity.x < 0.0f)
-        {
-            m_dogBody.AddForce(Vector3.right * m_bashStrenght, ForceMode.Impulse);
-        }        
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
-
