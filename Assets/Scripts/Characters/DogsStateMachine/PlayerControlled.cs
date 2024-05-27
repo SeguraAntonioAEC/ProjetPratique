@@ -3,39 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControlled : DogState
-{
-    protected Rigidbody m_dogBody;
-
-    protected Animator m_dogAnimator;
-
-    //DogStateMachine movement and physics:
-    [SerializeField] protected float m_dogSpeed;
-
-    [SerializeField] protected float m_dogSwimSpeed;
-
-    [SerializeField] protected float m_jumpForce;
-
-    [SerializeField] protected float m_swimMaxDistance;
-
-    [SerializeField] protected float m_rayLength;
-
-    [SerializeField] protected float m_slopeRay;
-
-    protected Vector3 m_lastSafePosition;
-
-    protected bool m_isGrounded = true;
-
-    protected bool m_isMoving = false;
-
-    protected bool m_isInWater = false;
-
-    protected bool m_isSafe = true;
-
-    public PlayerControlled(DogStateMachine stateMachine) : base(stateMachine)
-    {
-        m_dogBody = m_stateMachine.GetComponent<Rigidbody>();
-        m_dogAnimator =m_stateMachine.GetComponent<Animator>();
-        m_lastSafePosition = m_stateMachine.transform.position;
+{  
+        
+    public PlayerControlled(DogStateMachine stateMachine, DogData _data) : base(stateMachine, _data)
+    {       
+        data.lastSafePosition = m_stateMachine.transform.position;
+        m_stateMachine.GetAgent().enabled = false;
     }
 
     public override void Execute()
@@ -48,42 +21,42 @@ public class PlayerControlled : DogState
     }
     public void BasicMovement()
     {
-        if (!m_dogBody) return;
+        if (!m_stateMachine.GetRigidbody()) return;
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        Vector3 velocity = m_dogBody.velocity;
-        velocity.x = m_dogSpeed * horizontalInput;
-        velocity.z = m_dogSpeed * verticalInput;
-        m_dogBody.velocity = velocity;
-        float movementMagnitude = (m_dogBody.velocity - Vector3.up * m_dogBody.velocity.y).magnitude;
+        Vector3 velocity = m_stateMachine.GetRigidbody().velocity;
+        velocity.x = data.dogSpeed * horizontalInput;
+        velocity.z = data.dogSpeed * verticalInput;
+        m_stateMachine.GetRigidbody().velocity = velocity;
+        float movementMagnitude = (m_stateMachine.GetRigidbody().velocity - Vector3.up * m_stateMachine.GetRigidbody().velocity.y).magnitude;
         if (movementMagnitude > 0.0f)
         {
-            Vector3 tempVector = m_dogBody.transform.position + velocity;
-            tempVector.y = m_dogBody.transform.position.y;
-            m_dogBody.transform.LookAt(tempVector);
-            m_isMoving = true;
+            Vector3 tempVector = m_stateMachine.GetRigidbody().transform.position + velocity;
+            tempVector.y = m_stateMachine.GetRigidbody().transform.position.y;
+            m_stateMachine.GetRigidbody().transform.LookAt(tempVector);
+            data.isMoving = true;
         }
         else
         {
-            m_isMoving = false;
+            data.isMoving = false;
         }
-        m_dogAnimator.SetFloat("Movement_f", movementMagnitude);
+        m_stateMachine.GetAnimator().SetFloat("Movement_f", movementMagnitude);
     }
     public void Sprint()
     {
-        if (!m_dogBody) return;
-        if (m_isMoving && Input.GetKeyDown(KeyCode.LeftShift))
+        if (!m_stateMachine.GetRigidbody()) return;
+        if (data.isMoving && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            m_dogBody.velocity = m_dogBody.velocity * 2.0f;
+            m_stateMachine.GetRigidbody().velocity = m_stateMachine.GetRigidbody().velocity * 2.0f;
         }
     }
     public virtual void Jump()
     {
-        if (!m_dogBody) return;
-        if (Input.GetKeyDown(KeyCode.Space) && m_isGrounded)
+        if (!m_stateMachine.GetRigidbody()) return;
+        if (Input.GetKeyDown(KeyCode.Space) && data.isGrounded)
         {
-            m_dogBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
-            m_isGrounded = false;
+            m_stateMachine.GetRigidbody().AddForce(Vector3.up * data.jumpForce, ForceMode.Impulse);
+            data.isGrounded = false;
         }
     }
 
@@ -96,19 +69,19 @@ public class PlayerControlled : DogState
         //{
         //    if (surfaceInfo.collider == false)
         //    {
-        //        m_isGrounded = false;
+        //        data.m_isGrounded = false;
         //        m_isInWater = false;
         //    }
         //    if (surfaceInfo.collider.tag == "Level Ground")
         //    {
         //        SetLastSafePosition();
-        //        m_isGrounded = true;
+        //        data.m_isGrounded = true;
         //        m_isInWater = false;               
         //    }
         //    if (surfaceInfo.collider.tag == "Water")
         //    {
         //        m_isInWater = true;
-        //        m_isGrounded = false;                
+        //        data.m_isGrounded = false;                
         //    }
         //    Debug.DrawRay(transform.position, Vector3.down, Color.red, 5.0f);
         //}
@@ -116,19 +89,19 @@ public class PlayerControlled : DogState
         //{
         //    if (surfaceInfo.collider == false)
         //    {
-        //        m_isGrounded = false;
+        //        data.m_isGrounded = false;
         //        m_isInWater = false;
         //    }
         //    if (surfaceInfo.collider.tag == "Level Ground")
         //    {
         //        SetLastSafePosition();
-        //        m_isGrounded = true;
+        //        data.m_isGrounded = true;
         //        m_isInWater = false;
         //    }
         //    if (surfaceInfo.collider.tag == "Water")
         //    {
         //        m_isInWater = true;
-        //        m_isGrounded = false;
+        //        data.m_isGrounded = false;
         //    }
         //    Debug.DrawRay(transform.position -Vector3.back, transform.forward, Color.red, 5.0f);
         //}
@@ -164,19 +137,19 @@ public class PlayerControlled : DogState
     {
         if (m_stateMachine.transform.position.y <= -0.5f)
         {
-            m_isSafe = false;
+            data.isSafe = false;
         }
-        if (m_isSafe == false && m_stateMachine.transform.position.y <= -1.0f)
+        if (data.isSafe == false && m_stateMachine.transform.position.y <= -1.0f)
         {
-            m_stateMachine.transform.position = m_lastSafePosition;
-            m_isSafe = true;
+            m_stateMachine.transform.position = data.lastSafePosition;
+            data.isSafe = true;
         }
     }
     public void SetLastSafePosition()
     {
-        if (m_isGrounded && m_stateMachine.transform.position.y >= 0.0f)
+        if (data.isGrounded && m_stateMachine.transform.position.y >= 0.0f)
         {
-            m_lastSafePosition = m_stateMachine.transform.position;
+            data.lastSafePosition = m_stateMachine.transform.position;
         }
     }
 
@@ -184,13 +157,13 @@ public class PlayerControlled : DogState
     {
         if (collision.gameObject.tag == "Level Ground")
         {
-            m_isGrounded = true;
-            m_isSafe = true;
+            data.isGrounded = true;
+            data.isSafe = true;
         }
         if (collision.gameObject.tag == "Water")
         {
-            m_isInWater = true;
-            m_isGrounded = false;
+            data.isInWater = true;
+            data.isGrounded = false;
         }
     }
 }

@@ -6,9 +6,12 @@ public abstract class DogState
 {
     protected DogStateMachine m_stateMachine;
 
-    public DogState(DogStateMachine stateMachine)
+    protected DogData data;
+
+    public DogState(DogStateMachine stateMachine, DogData _data)
     {
         m_stateMachine = stateMachine;
+        data = _data;
     }
 
     public abstract void Execute();

@@ -1,0 +1,11 @@
+-comment implementer les actions au moment ou un switch de state est faite, ex une coroutine continue a rouler pendant le switch pour completer un puzzle.
+
+-Les variables exposées a l'editeur... faire une panoplie de set get ou les mettre public a la racine de la state machine.
+
+-creer un animator independant de lui qui existe deja. 
+
+- idle behaviours (timer de temps sans mouvement).
+
+scriptable objects pour les variables 
+
+- 

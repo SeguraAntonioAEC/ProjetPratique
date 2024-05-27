@@ -36,4 +36,7 @@
 - [] Save System 
 - [] Inventory??
 
-
+# Code Repair
+==========
+- [] repair state machine 
+- [] refresh systems with new code structure
