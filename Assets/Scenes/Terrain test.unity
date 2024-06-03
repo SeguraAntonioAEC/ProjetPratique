@@ -2216,11 +2216,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 686977907}
     m_Modifications:
     - target: {fileID: 365596324514518436, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_Name
       value: Cooper
+      objectReference: {fileID: 0}
+    - target: {fileID: 365596324514518436, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_RootOrder
@@ -2240,15 +2244,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.52
+      value: -4.922392
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.029999971
+      value: -0.5397727
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.951
+      value: 1.5020199
       objectReference: {fileID: 0}
     - target: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2730,7 +2734,7 @@ MonoBehaviour:
     lastSafePosition: {x: 0, y: 0, z: 0}
     isGrounded: 1
     isMoving: 0
-    isInWater: 1
+    isInWater: 0
     isSafe: 1
 --- !u!135 &514486145
 SphereCollider:
@@ -3483,11 +3487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dog: {fileID: 0}
-  m_dogsList:
-  - {fileID: 50384480}
-  - {fileID: 514486142}
-  - {fileID: 978014984}
-  m_dogInUse: 0
+  m_dogInUseID: 0
   m_followCam: {fileID: 181498905}
 --- !u!4 &686977907
 Transform:
@@ -3501,7 +3501,10 @@ Transform:
   m_LocalPosition: {x: 16.442392, y: 0.56977266, z: 9.44898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 978014984}
+  - {fileID: 50384480}
+  - {fileID: 514486142}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &696352372
@@ -4937,7 +4940,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 686977907}
     m_Modifications:
     - target: {fileID: 2794546695023478274, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_Controller
@@ -4950,6 +4953,10 @@ PrefabInstance:
     - target: {fileID: 4036812841360472467, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_Name
       value: Rally
+      objectReference: {fileID: 0}
+    - target: {fileID: 4036812841360472467, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_RootOrder
@@ -4969,15 +4976,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.06
+      value: -2.382392
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: -0.5497727
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.33
+      value: 0.8810196
       objectReference: {fileID: 0}
     - target: {fileID: 7953013605266863734, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12102,7 +12109,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 686977907}
     m_Modifications:
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_RootOrder
@@ -12110,15 +12117,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.65
+      value: -3.7923927
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: -0.5397727
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.29
+      value: -0.15898037
       objectReference: {fileID: 0}
     - target: {fileID: 5569337647397463332, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12151,6 +12158,10 @@ PrefabInstance:
     - target: {fileID: 6908665937656643875, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_Name
       value: Murphy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908665937656643875, guid: 797471026413bdf40945207756db2d25, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8103685831287587040, guid: 797471026413bdf40945207756db2d25, type: 3}
       propertyPath: m_Controller
@@ -12841,9 +12852,6 @@ SceneRoots:
   - {fileID: 1045064903}
   - {fileID: 298832076}
   - {fileID: 2043799153}
-  - {fileID: 938179659}
-  - {fileID: 2054199927}
-  - {fileID: 443198440}
   - {fileID: 1253104747}
   - {fileID: 202844988}
   - {fileID: 181498906}

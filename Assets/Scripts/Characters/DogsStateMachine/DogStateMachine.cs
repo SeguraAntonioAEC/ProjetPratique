@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class DogStateMachine : MonoBehaviour
 {
-    DogState m_currentState;
+    protected DogState m_currentState;
 
     protected Rigidbody m_Rigidbody;
 
@@ -21,8 +21,6 @@ public class DogStateMachine : MonoBehaviour
 
     private void Start()
     {
-        m_currentState = new PlayerControlled(this, dogProperties);
-
         m_Rigidbody = GetComponent<Rigidbody>();
 
         m_Animator = GetComponent<Animator>();
@@ -37,9 +35,17 @@ public class DogStateMachine : MonoBehaviour
         m_currentState = state;
     }
 
+    public DogState GetState() { return m_currentState; }
     public virtual void Update()
     {
-        m_currentState.Execute();
+        if (m_currentState == null)
+        {
+            m_currentState = new SelfControlled(this, dogProperties);
+        }
+        else
+        { 
+            m_currentState.Execute();
+        }
     }
 
     public Rigidbody GetRigidbody()

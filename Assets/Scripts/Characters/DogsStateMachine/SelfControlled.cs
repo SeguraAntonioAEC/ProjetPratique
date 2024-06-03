@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class SelfControlled : DogState
 {
-    //composantes de l'IA ?
-
-
     public SelfControlled(DogStateMachine stateMachine, DogData _data) : base(stateMachine, _data)
     { 
         m_stateMachine.GetAgent().enabled = true;
@@ -16,7 +13,7 @@ public class SelfControlled : DogState
 
     public override void Execute()
     {
-       
+        Debug.Log("execute in AI");
     }
 
     void FollowLead()
@@ -27,6 +24,6 @@ public class SelfControlled : DogState
 
     void PlayIdleRandAnim()
     {
-        
+        // if certain time f inactivity play random Idle anim 
     }
 }

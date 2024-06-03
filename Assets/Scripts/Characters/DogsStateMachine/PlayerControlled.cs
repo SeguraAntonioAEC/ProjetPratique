@@ -8,7 +8,11 @@ public class PlayerControlled : DogState
     public PlayerControlled(DogStateMachine stateMachine, DogData _data) : base(stateMachine, _data)
     {       
         data.lastSafePosition = m_stateMachine.transform.position;
-        m_stateMachine.GetAgent().enabled = false;
+
+        if (m_stateMachine.GetAgent() != null)
+        { 
+            m_stateMachine.GetAgent().enabled = false;        
+        }
     }
 
     public override void Execute()
@@ -22,13 +26,17 @@ public class PlayerControlled : DogState
     public void BasicMovement()
     {
         if (!m_stateMachine.GetRigidbody()) return;
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+
         Vector3 velocity = m_stateMachine.GetRigidbody().velocity;
         velocity.x = data.dogSpeed * horizontalInput;
         velocity.z = data.dogSpeed * verticalInput;
         m_stateMachine.GetRigidbody().velocity = velocity;
+
         float movementMagnitude = (m_stateMachine.GetRigidbody().velocity - Vector3.up * m_stateMachine.GetRigidbody().velocity.y).magnitude;
+
         if (movementMagnitude > 0.0f)
         {
             Vector3 tempVector = m_stateMachine.GetRigidbody().transform.position + velocity;
