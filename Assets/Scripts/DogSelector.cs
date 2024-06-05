@@ -5,6 +5,12 @@ using Cinemachine;
 
 public class DogSelector : MonoBehaviour
 {
+    private static DogSelector m_Instance;
+
+    private DogSelector()
+    { 
+    }
+
     [Header("Currently Controlled Dog"), Space()]
     [SerializeField] private DogStateMachine m_dog;
  
@@ -16,6 +22,20 @@ public class DogSelector : MonoBehaviour
     [Header("Cinemachine Camera"), Space()]
     public CinemachineVirtualCamera m_followCam;
 
+    public static DogSelector Instance => m_Instance;
+
+    private void Awake()
+    {
+        if (m_Instance == null)
+        {
+            m_Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         for (int i = 0; i < transform.childCount; ++i) {
@@ -37,6 +57,10 @@ public class DogSelector : MonoBehaviour
     void Update()
     {
         DogSwapper();
+        if (m_dog != null)
+        { 
+            transform.position = m_dog.transform.position;        
+        }
     }
 
     void DogSwapper()
@@ -85,4 +109,6 @@ public class DogSelector : MonoBehaviour
         m_followCam.Follow = m_dog.transform;
         Debug.Log("Currently Controlled Dog: " + m_dogsList[m_dogInUseID].ToString());
     }
+
+
 }
