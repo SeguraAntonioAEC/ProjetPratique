@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2807449429036539767}
   - component: {fileID: 2807449429037866839}
   - component: {fileID: 2807449429038964119}
-  - component: {fileID: 887019289579187148}
   - component: {fileID: -4731451645325707160}
+  - component: {fileID: 6995546756205462084}
   m_Layer: 0
   m_Name: Tree_04
   m_TagString: Untagged
@@ -27,12 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2807449429036958551}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2807449429037866839
 MeshFilter:
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -83,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &887019289579187148
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807449429036958551}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 83e8d2542718a2e49a73d71c3a5fc685, type: 3}
 --- !u!205 &-4731451645325707160
 LODGroup:
   m_ObjectHideFlags: 0
@@ -105,19 +93,45 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2807449429036958551}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
+  m_LocalReferencePoint: {x: -0.2145462, y: 3.337813, z: 0.02152729}
+  m_Size: 6.6903257
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.018786632
+  - screenRelativeHeight: 0.019759629
     fadeTransitionWidth: 0
-    renderers: []
-  - screenRelativeHeight: 0.012840831
+    renderers:
+    - renderer: {fileID: 2807449429038964119}
+  - screenRelativeHeight: 0.005873033
     fadeTransitionWidth: 0
-    renderers: []
-  - screenRelativeHeight: 0.0070127686
+    renderers:
+    - renderer: {fileID: 2807449429038964119}
+  - screenRelativeHeight: 0.0010481954
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 2807449429038964119}
   m_Enabled: 1
+--- !u!136 &6995546756205462084
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807449429036958551}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.3512436
+  m_Height: 6.6903257
+  m_Direction: 1
+  m_Center: {x: -0.2145462, y: 3.337813, z: 0.02152735}

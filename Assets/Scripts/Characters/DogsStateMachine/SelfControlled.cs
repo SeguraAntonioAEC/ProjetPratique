@@ -22,8 +22,14 @@ public class SelfControlled : DogState
         {
             FollowLead(DogSelector.Instance.transform.position);
         }
+        else
+        {
+            data.isMoving = false;
+            m_stateMachine.GetAnimator().SetFloat("Movement_f", 0);
 
-     
+        }
+        
+
 
     }
 
@@ -39,17 +45,15 @@ public class SelfControlled : DogState
             tempVector.y = m_stateMachine.GetAgent().transform.position.y;
             m_stateMachine.GetRigidbody().transform.LookAt(tempVector);
             data.isMoving = true;
-        }
-        else
-        {
-            data.isMoving = false;
-        }
-        m_stateMachine.GetAnimator().SetFloat("Movement_f", movementMagnitude);
+        }       
        
     }
 
     void PlayIdleRandAnim()
     {
+        // needs timer 
+        // needs anim options list 
+        // needs trigger 
         // if certain time f inactivity play random Idle anim 
     }
 }
