@@ -1,32 +1,39 @@
 #  Mecaniqus De Base.
 ======================
 - [] water mecanics.(Deplacement + limitations par perso)
+    - [x] deplacemnt ralenti 
+    - [x] endurance par chien
 - [] TeamWork Mecanic.(Objets nescessitant les 3 chiens)
 
 - ## Collectibles
-- [] Create Script.
+- [x] Create Script.
 
 - ## Movable Objects 
 - [] obstacles (Bushes, Fences, Walls, Beaver dam?)
-- [] water movable objects (platforms)
+~~- [] water movable objects (platforms)~~
 
 - # TO DO FOR HUD
 ===================
-- [] hability selector.
-- [] Dog Health Display.
+~~- [] hability selector.~~
+- [x] Dog Health Display.
 - [] Collectibles Count.
 - [] Swim Gauge.
 
 ## main menu 
 ============
-- [] Creer une scene.
+- [x] Creer une scene.
 - [] Animer les Chiens dans La scene
+    - [x] walk
+    - [ ] jump
+    ~~- [ ] swim~~
+    - [ ] dig
+    - [ ] bite
 - [] Creer les elements de hud (bouttons, titre, etc...)
 - ## pause menu
 ================
 - [] Resume
 - [] Back to Desktop
-- [] Main Menu 
+- [x] Main Menu 
 - [] Settings
 
 # Systemes 
@@ -34,9 +41,9 @@
 - [] Audio Manager
 - [] Event System
 - [] Save System 
-- [] Inventory??
+~~- [] Inventory??~~
 
 # Code Repair
 ==========
-- [] repair state machine 
-- [] refresh systems with new code structure
+- [x] repair state machine 
+~~- [] refresh systems with new code structure~~
