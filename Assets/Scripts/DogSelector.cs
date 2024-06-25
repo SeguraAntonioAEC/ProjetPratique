@@ -49,6 +49,7 @@ public class DogSelector : MonoBehaviour
             else 
             {
                 machine.SetState(new SelfControlled(machine, machine.GetDogData()));
+                machine.GetAgent().enabled = true;
             }
         }           
     }

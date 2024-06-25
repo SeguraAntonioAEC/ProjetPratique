@@ -109,9 +109,16 @@ public class DogStateMachine : MonoBehaviour
         else
         {
             Debug.LogError("No Navigation Mesh Agent Found");
-            return null;
+            m_Agent = GetComponent<NavMeshAgent>();
+            if (m_Agent != null)
+            {
+                Debug.LogWarning("Navigation Agent now Valid");
+            }
+            return m_Agent;
         }
     }
+
+
 }
 
 

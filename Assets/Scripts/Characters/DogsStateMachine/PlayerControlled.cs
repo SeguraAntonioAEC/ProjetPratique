@@ -70,49 +70,49 @@ public class PlayerControlled : DogState
 
     public void SurfaceCheck()
     {
-        //RaycastHit surfaceInfo;
-        //Ray checkSurfaceRay = new Ray(transform.position - Vector3.down * transform.position.y, Vector3.down);
-        //Ray checkSlope = new Ray(transform.position - Vector3.down * transform.position.y,transform.forward);
-        //if(Physics.Raycast(checkSurfaceRay, out surfaceInfo ,m_rayLength))
-        //{
-        //    if (surfaceInfo.collider == false)
-        //    {
-        //        data.m_isGrounded = false;
-        //        m_isInWater = false;
-        //    }
-        //    if (surfaceInfo.collider.tag == "Level Ground")
-        //    {
-        //        SetLastSafePosition();
-        //        data.m_isGrounded = true;
-        //        m_isInWater = false;               
-        //    }
-        //    if (surfaceInfo.collider.tag == "Water")
-        //    {
-        //        m_isInWater = true;
-        //        data.m_isGrounded = false;                
-        //    }
-        //    Debug.DrawRay(transform.position, Vector3.down, Color.red, 5.0f);
-        //}
-        //if (Physics.Raycast(checkSlope, out surfaceInfo, m_slopeRay))
-        //{
-        //    if (surfaceInfo.collider == false)
-        //    {
-        //        data.m_isGrounded = false;
-        //        m_isInWater = false;
-        //    }
-        //    if (surfaceInfo.collider.tag == "Level Ground")
-        //    {
-        //        SetLastSafePosition();
-        //        data.m_isGrounded = true;
-        //        m_isInWater = false;
-        //    }
-        //    if (surfaceInfo.collider.tag == "Water")
-        //    {
-        //        m_isInWater = true;
-        //        data.m_isGrounded = false;
-        //    }
-        //    Debug.DrawRay(transform.position -Vector3.back, transform.forward, Color.red, 5.0f);
-        //}
+        RaycastHit surfaceInfo;
+        Ray checkSurfaceRay = new Ray(m_stateMachine.transform.position + (Vector3.up / 2), Vector3.down);
+        Ray checkSlope = new Ray(m_stateMachine.transform.position , m_stateMachine.transform.forward);
+        if (Physics.Raycast(checkSurfaceRay, out surfaceInfo, m_stateMachine.GetDogData().rayLength))
+        {
+            if (surfaceInfo.collider == false)
+            {
+                m_stateMachine.GetDogData().isGrounded = false;
+                m_stateMachine.GetDogData().isInWater = false;
+            }
+            if (surfaceInfo.collider.tag == "Level Ground")
+            {
+                SetLastSafePosition();
+                m_stateMachine.GetDogData().isGrounded = true;
+                m_stateMachine.GetDogData().isInWater = false;
+            }
+            if (surfaceInfo.collider.tag == "Water")
+            {
+                m_stateMachine.GetDogData().isInWater = true;
+                m_stateMachine.GetDogData().isGrounded = false;
+            }
+            Debug.DrawRay(m_stateMachine.transform.position, Vector3.down, Color.red, 1.0f);
+        }
+        if (Physics.Raycast(checkSlope, out surfaceInfo, m_stateMachine.GetDogData().slopeRay))
+        {
+            if (surfaceInfo.collider == false)
+            {
+                m_stateMachine.GetDogData().isGrounded = false;
+                m_stateMachine.GetDogData().isInWater = false;
+            }
+            if (surfaceInfo.collider.tag == "Level Ground")
+            {
+                SetLastSafePosition();
+                m_stateMachine.GetDogData().isGrounded = true;
+                m_stateMachine.GetDogData().isInWater = false;
+            }
+            if (surfaceInfo.collider.tag == "Water")
+            {
+                m_stateMachine.GetDogData().isInWater = true;
+                m_stateMachine.GetDogData().isGrounded = false;
+            }
+            Debug.DrawRay(m_stateMachine.transform.position, m_stateMachine.transform.forward, Color.green, 5.0f);
+        }
     }
     public void Bite()
     {

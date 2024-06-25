@@ -314,8 +314,8 @@ MonoBehaviour:
     dogSwimSpeed: 5
     jumpForce: 5
     swimMaxDistance: 5
-    rayLength: 0.025
-    slopeRay: 0.1
+    rayLength: 0.55
+    slopeRay: 0.2
     lastSafePosition: {x: 0, y: 0, z: 0}
     isGrounded: 1
     isMoving: 0
@@ -331,7 +331,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -340,7 +340,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.06
-  m_BaseOffset: -0.09
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &74204603
@@ -2739,8 +2739,8 @@ MonoBehaviour:
     dogSwimSpeed: 5
     jumpForce: 5
     swimMaxDistance: 5
-    rayLength: 0.025
-    slopeRay: 0.1
+    rayLength: 0.55
+    slopeRay: 0.2
     lastSafePosition: {x: 0, y: 0, z: 0}
     isGrounded: 1
     isMoving: 0
@@ -2777,7 +2777,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.56
-  m_Speed: 5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2786,9 +2786,9 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.99
-  m_BaseOffset: -0.09
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!1 &521426058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,13 +4472,13 @@ MonoBehaviour:
   m_GenerateLinks: 1
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_OverrideTileSize: 1
+  m_TileSize: 128
+  m_OverrideVoxelSize: 1
+  m_VoxelSize: 0.05
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 3961e46d690dac14a91297a4290c8e9f, type: 2}
-  m_BuildHeightMesh: 0
+  m_BuildHeightMesh: 1
 --- !u!1001 &871558865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5446,8 +5446,8 @@ MonoBehaviour:
     dogSwimSpeed: 5
     jumpForce: 5
     swimMaxDistance: 5
-    rayLength: 0.025
-    slopeRay: 0.25
+    rayLength: 0.55
+    slopeRay: 0.2
     lastSafePosition: {x: 0, y: 0, z: 0}
     isGrounded: 1
     isMoving: 0
@@ -5463,7 +5463,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -5472,7 +5472,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.86
-  m_BaseOffset: -0.08
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &987365572
