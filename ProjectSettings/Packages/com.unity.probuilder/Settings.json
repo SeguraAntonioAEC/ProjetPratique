@@ -24,12 +24,28 @@
             {
                 "type": "UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "about.identifier",
+<<<<<<< Updated upstream
                 "value": "{\"m_Value\":{\"m_Major\":5,\"m_Minor\":1,\"m_Patch\":0,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+=======
+<<<<<<< HEAD
+                "value": "{\"m_Value\":{\"m_Major\":5,\"m_Minor\":1,\"m_Patch\":1,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+=======
+                "value": "{\"m_Value\":{\"m_Major\":5,\"m_Minor\":1,\"m_Patch\":0,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+>>>>>>> f79da9eca8a6f881e59d5e4bdbf358ed978a6f60
+>>>>>>> Stashed changes
             },
             {
                 "type": "UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "preferences.version",
+<<<<<<< Updated upstream
                 "value": "{\"m_Value\":{\"m_Major\":5,\"m_Minor\":1,\"m_Patch\":0,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+=======
+<<<<<<< HEAD
+                "value": "{\"m_Value\":{\"m_Major\":5,\"m_Minor\":1,\"m_Patch\":1,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+=======
+                "value": "{\"m_Value\":{\"m_Major\":5,\"m_Minor\":1,\"m_Patch\":0,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+>>>>>>> f79da9eca8a6f881e59d5e4bdbf358ed978a6f60
+>>>>>>> Stashed changes
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",

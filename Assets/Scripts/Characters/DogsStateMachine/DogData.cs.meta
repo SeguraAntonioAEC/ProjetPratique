@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/Scripts/Characters/DogsStateMachine/DogData.cs.meta
 guid: 982a91acecd36334c9ddc321e958d393
+========
+guid: f2535fea7ec333d469fbfd08a9d35104
+>>>>>>>> Stashed changes:Assets/Scripts/Characters/DogsStateMachine/DogState.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

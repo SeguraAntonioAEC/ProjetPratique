@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/Scripts/Characters/DogsStateMachine/SelfControlled.cs.meta
-guid: 3146dfd51ab36e549b8cdff03959b30b
-========
 guid: b9b9a5ec55d370e42af5f58e78bd3a30
->>>>>>>> Stashed changes:Assets/Scripts/Characters/DogsStateMachine/DogStateMachine.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

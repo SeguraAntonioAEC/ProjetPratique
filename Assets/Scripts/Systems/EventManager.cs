@@ -1,64 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 
+public enum EEvents
+{
+
+}
 public class EventManager : MonoBehaviour
 {
-    private Dictionary<string, Action<Dictionary<string, object>>> eventsDictionnary;
+    private Dictionary<EEvents, Action<Dictionary<string, object>>> eventsDictionnary;
 
     private static EventManager eventManager;
 
-    public static EventManager managerInstance
+    public static EventManager Instance
     {
         get
         {
-            if (!eventManager)
+            if (eventManager == null)
             {
-                eventManager = FindObjectOfType<EventManager>();
-
-                if (!eventManager)
-                {
-                    Debug.LogError("No event manager found");
-                }
-                else 
-                {
-                    eventManager.Init();
-                    DontDestroyOnLoad(eventManager);
-                }
+                eventManager = new EventManager();
             }
-         return eventManager;
+            return eventManager;
         }
     }
-
-    private void Init()
+    private EventManager()
     {
-        if (eventsDictionnary == null)
-        {
-            eventsDictionnary = new Dictionary<string, Action<Dictionary<string, object>>>();
-        }
+        eventsDictionnary = new Dictionary<EEvents, Action<Dictionary<string, object>>>();
     }
+<<<<<<< Updated upstream
 
 
     void StartListening(string eventName, Action<Dictionary<string,object>> listener)
     {
+=======
+<<<<<<< HEAD
+    void StartListening(EEvents _event, Action<Dictionary<string,object>> _func)
+    {
+        if (eventsDictionnary.ContainsKey(_event))
+=======
+
+
+    void StartListening(string eventName, Action<Dictionary<string,object>> listener)
+    {
+>>>>>>> Stashed changes
         Action<Dictionary<string,object>> thisEvent;
         if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
+>>>>>>> f79da9eca8a6f881e59d5e4bdbf358ed978a6f60
         {
-            thisEvent += listener;
-            managerInstance.eventsDictionnary[eventName] = thisEvent;
+            eventsDictionnary[_event] += _func;
         }
         else
         {
-            thisEvent += listener;
-            managerInstance.eventsDictionnary.Add(eventName, thisEvent);
-        }
+            eventsDictionnary.Add(_event, _func);
+        }       
     }
 
+<<<<<<< Updated upstream
     void StopListening(string eventName, Action<Dictionary<string, object>> listener)
+=======
+<<<<<<< HEAD
+    void StopListening(EEvents _event, Action<Dictionary<string, object>> _func)
+=======
+    void StopListening(string eventName, Action<Dictionary<string, object>> listener)
+>>>>>>> f79da9eca8a6f881e59d5e4bdbf358ed978a6f60
+>>>>>>> Stashed changes
     {
-        if (!eventManager)
+        if (eventsDictionnary.ContainsKey(_event))
         {
+<<<<<<< HEAD
+            eventsDictionnary[_event] -= _func;
+        }       
+    }
+
+    void TriggerAction(EEvents _event, Dictionary<string, object> _params)
+    {
+        if (eventsDictionnary.ContainsKey(_event))
+        {
+            eventsDictionnary[_event].Invoke(_params);
+        }
+        else
+        {
+            Debug.Log($"NO {_event} IN EEvnts");
+=======
             return;
         }
 
@@ -76,7 +100,12 @@ public class EventManager : MonoBehaviour
         if (managerInstance.eventsDictionnary.TryGetValue(eventName, out thisEvent))
         {            
             thisEvent?.Invoke(listener);
+<<<<<<< Updated upstream
+=======
+>>>>>>> f79da9eca8a6f881e59d5e4bdbf358ed978a6f60
+>>>>>>> Stashed changes
         }
-    }
         
+    }
+
 }

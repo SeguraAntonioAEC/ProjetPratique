@@ -5,30 +5,31 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
 
     public Sound[] audioClips;
 
     private Dictionary<string, Queue<AudioSource>> audioSourcePool;
+    public static AudioManager m_AudioManager { get; private set;}
+
+
+
     private void Awake()
     {
-        if (instance == null)
+        if (m_AudioManager == null)
         {
-            instance = this;
+            m_AudioManager = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
-            return;
         }
-
-        DontDestroyOnLoad(gameObject);
 
         audioSourcePool = new Dictionary<string, Queue<AudioSource>>();
 
         foreach (Sound s in audioClips)
         {
-           s.source = CreateAudioSource(s);
+            s.source = CreateAudioSource(s);
         }
     }
 
@@ -42,7 +43,7 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = sound.volume;
         audioSource.pitch = sound.pitch;
         audioSource.loop = sound.loop;
-               
+
         if (!audioSourcePool.ContainsKey(sound.name))
         {
             audioSourcePool[sound.name] = new Queue<AudioSource>();
@@ -50,7 +51,7 @@ public class AudioManager : MonoBehaviour
 
         audioSourcePool[sound.name].Enqueue(audioSource);
 
-        return audioSource;    
+        return audioSource;
     }
 
     private AudioSource GetAvailableAudioSource(string name)
@@ -64,7 +65,7 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
-       Sound s = Array.Find(audioClips, sound => sound.name == name);
+        Sound s = Array.Find(audioClips, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound named: " + name + " Not Found ");
