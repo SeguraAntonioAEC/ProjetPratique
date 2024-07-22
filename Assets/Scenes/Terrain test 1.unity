@@ -297,7 +297,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.48, z: 0}
---- !u!114 &50384484
+--- !u!114 &50384483
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,43 +306,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 50384478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b9a5ec55d370e42af5f58e78bd3a30, type: 3}
+  m_Script: {fileID: 11500000, guid: 86668a4418b8b274aba505f687a0f46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dogProperties:
-    dogSpeed: 5
-    dogSwimSpeed: 5
-    jumpForce: 5
-    swimMaxDistance: 5
-    rayLength: 0.55
-    slopeRay: 0.2
+    dogSpeed: 0
+    dogSwimSpeed: 0
+    jumpForce: 0
+    swimMaxDistance: 0
+    rayLength: 0
     lastSafePosition: {x: 0, y: 0, z: 0}
-    isGrounded: 1
+    isGrounded: 0
     isMoving: 0
     isInWater: 0
-    isSafe: 1
---- !u!195 &50384485
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50384478}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.06
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+    isSafe: 0
 --- !u!1 &74204603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,17 +2277,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 365596324514518436, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 514486144}
+      insertIndex: -1
+      addedObject: {fileID: 514486146}
     - targetCorrespondingSourceObject: {fileID: 365596324514518436, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 514486141}
     - targetCorrespondingSourceObject: {fileID: 365596324514518436, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 514486145}
-    - targetCorrespondingSourceObject: {fileID: 365596324514518436, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 514486147}
   m_SourcePrefab: {fileID: 100100000, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
 --- !u!1 &486349143
 GameObject:
@@ -2722,30 +2696,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 675722601668264432, guid: 4a1cba06591455d4f9cf03f80d852bb5, type: 3}
   m_PrefabInstance: {fileID: 443198440}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &514486144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514486140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b9a5ec55d370e42af5f58e78bd3a30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dogProperties:
-    dogSpeed: 5
-    dogSwimSpeed: 5
-    jumpForce: 5
-    swimMaxDistance: 5
-    rayLength: 0.55
-    slopeRay: 0.2
-    lastSafePosition: {x: 0, y: 0, z: 0}
-    isGrounded: 1
-    isMoving: 0
-    isInWater: 0
-    isSafe: 1
 --- !u!135 &514486145
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2767,28 +2717,29 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.48, z: 0}
---- !u!195 &514486147
-NavMeshAgent:
+--- !u!114 &514486146
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514486140}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.56
-  m_Speed: 10
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 3
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.99
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 3
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86668a4418b8b274aba505f687a0f46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogProperties:
+    dogSpeed: 0
+    dogSwimSpeed: 0
+    jumpForce: 0
+    swimMaxDistance: 0
+    rayLength: 0
+    lastSafePosition: {x: 0, y: 0, z: 0}
+    isGrounded: 0
+    isMoving: 0
+    isInWater: 0
+    isSafe: 0
 --- !u!1 &521426058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3482,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dog: {fileID: 0}
-  m_dogInUseID: 0
+  m_dogsList: []
+  m_dogInUse: 0
   m_followCam: {fileID: 181498905}
 --- !u!4 &686977907
 Transform:
@@ -4356,7 +4308,6 @@ GameObject:
   m_Component:
   - component: {fileID: 848948209}
   - component: {fileID: 848948208}
-  - component: {fileID: 848948210}
   m_Layer: 0
   m_Name: TerrainGroup_0
   m_TagString: Level Ground
@@ -4376,7 +4327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca34a6148db2d54493f84f379293f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroupID: 0
 --- !u!4 &848948209
 Transform:
   m_ObjectHideFlags: 0
@@ -4448,37 +4398,6 @@ Transform:
   - {fileID: 724258057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &848948210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848948207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 1
-  m_DefaultArea: 0
-  m_GenerateLinks: 1
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 1
-  m_TileSize: 128
-  m_OverrideVoxelSize: 1
-  m_VoxelSize: 0.05
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 3961e46d690dac14a91297a4290c8e9f, type: 2}
-  m_BuildHeightMesh: 1
 --- !u!1001 &871558865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5068,9 +4987,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4036812841360472467, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 978014988}
-    - targetCorrespondingSourceObject: {fileID: 4036812841360472467, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 978014983}
     - targetCorrespondingSourceObject: {fileID: 4036812841360472467, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
@@ -5078,7 +4994,7 @@ PrefabInstance:
       addedObject: {fileID: 978014986}
     - targetCorrespondingSourceObject: {fileID: 4036812841360472467, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 978014989}
+      addedObject: {fileID: 978014987}
   m_SourcePrefab: {fileID: 100100000, guid: b09ebfbe08f163d4cb7d1e420fcb9dbb, type: 3}
 --- !u!1 &943015549
 GameObject:
@@ -5429,7 +5345,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.48, z: 0}
---- !u!114 &978014988
+--- !u!114 &978014987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5438,43 +5354,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 978014982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b9a5ec55d370e42af5f58e78bd3a30, type: 3}
+  m_Script: {fileID: 11500000, guid: 86668a4418b8b274aba505f687a0f46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dogProperties:
-    dogSpeed: 5
-    dogSwimSpeed: 5
-    jumpForce: 5
-    swimMaxDistance: 5
-    rayLength: 0.55
-    slopeRay: 0.2
+    dogSpeed: 0
+    dogSwimSpeed: 0
+    jumpForce: 0
+    swimMaxDistance: 0
+    rayLength: 0
     lastSafePosition: {x: 0, y: 0, z: 0}
-    isGrounded: 1
+    isGrounded: 0
     isMoving: 0
     isInWater: 0
-    isSafe: 1
---- !u!195 &978014989
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978014982}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.86
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+    isSafe: 0
 --- !u!1001 &987365572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12294,9 +12187,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6908665937656643875, guid: 797471026413bdf40945207756db2d25, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 50384484}
-    - targetCorrespondingSourceObject: {fileID: 6908665937656643875, guid: 797471026413bdf40945207756db2d25, type: 3}
       insertIndex: -1
       addedObject: {fileID: 50384481}
     - targetCorrespondingSourceObject: {fileID: 6908665937656643875, guid: 797471026413bdf40945207756db2d25, type: 3}
@@ -12304,7 +12194,7 @@ PrefabInstance:
       addedObject: {fileID: 50384482}
     - targetCorrespondingSourceObject: {fileID: 6908665937656643875, guid: 797471026413bdf40945207756db2d25, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 50384485}
+      addedObject: {fileID: 50384483}
   m_SourcePrefab: {fileID: 100100000, guid: 797471026413bdf40945207756db2d25, type: 3}
 --- !u!1 &2054582369
 GameObject:

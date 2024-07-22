@@ -71,9 +71,10 @@ public class PlayerControlled : DogState
     public void SurfaceCheck()
     {
         RaycastHit surfaceInfo;
+
         Ray checkSurfaceRay = new Ray(m_stateMachine.transform.position + (Vector3.up / 2), Vector3.down);
-        Ray checkSlope = new Ray(m_stateMachine.transform.position , m_stateMachine.transform.forward);
-        if (Physics.Raycast(checkSurfaceRay, out surfaceInfo, m_stateMachine.GetDogData().rayLength))
+       
+        if (Physics.SphereCast(checkSurfaceRay, 1, out surfaceInfo, m_stateMachine.GetDogData().rayLength))
         {
             if (surfaceInfo.collider == false)
             {
@@ -90,29 +91,17 @@ public class PlayerControlled : DogState
             {
                 m_stateMachine.GetDogData().isInWater = true;
                 m_stateMachine.GetDogData().isGrounded = false;
-            }
-            Debug.DrawRay(m_stateMachine.transform.position, Vector3.down, Color.red, 1.0f);
-        }
-        if (Physics.Raycast(checkSlope, out surfaceInfo, m_stateMachine.GetDogData().slopeRay))
-        {
-            if (surfaceInfo.collider == false)
-            {
-                m_stateMachine.GetDogData().isGrounded = false;
-                m_stateMachine.GetDogData().isInWater = false;
-            }
-            if (surfaceInfo.collider.tag == "Level Ground")
-            {
-                SetLastSafePosition();
-                m_stateMachine.GetDogData().isGrounded = true;
-                m_stateMachine.GetDogData().isInWater = false;
-            }
-            if (surfaceInfo.collider.tag == "Water")
-            {
-                m_stateMachine.GetDogData().isInWater = true;
-                m_stateMachine.GetDogData().isGrounded = false;
-            }
-            Debug.DrawRay(m_stateMachine.transform.position, m_stateMachine.transform.forward, Color.green, 5.0f);
-        }
+            }    
+            
+        }       
+    }
+
+    void OnDrawGizmos()
+    {
+        Color sphereColor = Color.blue;
+        sphereColor.a = 100.0f;
+        Gizmos.color = sphereColor;
+        Gizmos.DrawSphere(m_stateMachine.transform.position + (Vector3.up / 2), 1);
     }
     public void Bite()
     {

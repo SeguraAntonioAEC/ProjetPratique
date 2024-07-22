@@ -15,9 +15,8 @@ public class DogData
     public float swimMaxDistance;
 
     [Header("RaycastLenghts")]
-    public float rayLength;
 
-    public float slopeRay;
+    public float rayLength;    
 
     [Header("Position reset vector")]
     public Vector3 lastSafePosition;
