@@ -5,19 +5,34 @@ using Cinemachine;
 
 public class DoggySelector : MonoBehaviour
 {
-    
-    public Transform m_dog;
-    public List<Transform> m_dogsList;
-    public int m_dogInUse;
-    public CinemachineVirtualCamera m_followCam; 
 
-    void Start()
+    [Header("Currently Controlled Dog"), Space()]
+    [SerializeField] private DogStateMachine m_dog;
+
+
+    [Header("Player's Dog Selection"), Space()]
+    private List<DogStateMachine> m_dogsList = new List<DogStateMachine>();
+    [SerializeField] private int m_dogInUseID;
+
+    [Header("Cinemachine Camera"), Space()]
+    public CinemachineVirtualCamera m_followCam;
+
+    private void Start()
     {
-        if (!m_dog && m_dogsList.Count >= 1)
+        for (int i = 0; i < transform.childCount; ++i)
         {
-            m_dog = m_dogsList[0];
+            Transform dogTrans = transform.GetChild(i);
+            DogStateMachine machine = dogTrans.GetComponent<DogStateMachine>();
+            m_dogsList.Add(machine);
+            if (i == 0)
+            {
+                machine.SetState(new PlayerControlled(machine, machine.GetDogData()));
+            }
+            else
+            {
+                machine.SetState(new SelfControlled(machine, machine.GetDogData()));
+            }
         }
-        Swap();
     }
 
     // Update is called once per frame
@@ -30,44 +45,46 @@ public class DoggySelector : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (m_dogInUse == 0)
+            int lastValue = m_dogInUseID;
+            if (m_dogInUseID == 0)
             {
-                m_dogInUse = m_dogsList.Count - 1;
+                m_dogInUseID = m_dogsList.Count - 1;
             }
             else 
             {
-                m_dogInUse -= 1;
-            }            
-            Swap();
+                m_dogInUseID -= 1;   
+            }
+            Swap(lastValue);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (m_dogInUse == m_dogsList.Count -1)
+            int lastValue = m_dogInUseID;
+            if (m_dogInUseID == m_dogsList.Count - 1)
             {
-                m_dogInUse = 0;
+                m_dogInUseID = 0;
             }
             else
             {
-                m_dogInUse += 1;
+                m_dogInUseID += 1;
             }
-            Swap();
+            Swap(lastValue);
         }
     }
 
-    public void Swap()
+    public void Swap(int _lastDogValue)
     {
-        m_dog = m_dogsList[m_dogInUse];
-        m_dog.GetComponent<Dog>().enabled = true;
-        for (int i = 0; i < m_dogsList.Count; i++)
-        {
-            if (m_dogsList[i] != m_dog)
-            {
-                m_dogsList[i].GetComponent<Dog>();
-                m_dogsList[i].GetComponent<Dog>().enabled = false;
-            }
-        }
-        m_followCam.LookAt = m_dog;
-        m_followCam.Follow = m_dog;
-        Debug.Log("DogInUse" + m_dogInUse);
+        m_dog = m_dogsList[m_dogInUseID];
+        DogStateMachine currentStateMachine = m_dog.GetComponent<DogStateMachine>();
+        DogState playerState = currentStateMachine.GetState();
+
+        DogStateMachine _dog = m_dogsList[_lastDogValue];
+        DogStateMachine lastStateMachine = _dog.GetComponent<DogStateMachine>();
+
+        currentStateMachine.SetState(new PlayerControlled(currentStateMachine, currentStateMachine.GetDogData()));
+        lastStateMachine.SetState(new SelfControlled(lastStateMachine, lastStateMachine.GetDogData()));
+
+        m_followCam.LookAt = m_dog.transform;
+        m_followCam.Follow = m_dog.transform;
+        Debug.Log("Currently Controlled Dog: " + m_dogsList[m_dogInUseID].ToString());
     }
 }

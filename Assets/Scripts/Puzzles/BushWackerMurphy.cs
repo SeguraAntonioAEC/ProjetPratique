@@ -5,25 +5,22 @@ using UnityEngine.UIElements;
 
 public class BushWackerMurphy : MonoBehaviour
 {
-    BoxCollider m_treeCollider; 
+    [SerializeField]List<CapsuleCollider> capsuleColliders;
+    private bool hasMurphyBashed;
 
    
     void Start()
     {
-        m_treeCollider = GetComponent<BoxCollider>();
-    }
+       hasMurphyBashed = false;
+    }    
 
-  
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.relativeVelocity.magnitude > 3.5f && collision.collider.name == "Murphy")
+        if (other.attachedRigidbody.velocity.magnitude > 2.5f && other.tag == "Murphy" && hasMurphyBashed == false)
         {
-           m_treeCollider.enabled = false;
+            hasMurphyBashed = true;
+            capsuleColliders[0].radius = capsuleColliders[0].radius / 2;
+            capsuleColliders[1].radius = capsuleColliders[1].radius / 2;
         }
     }
 }

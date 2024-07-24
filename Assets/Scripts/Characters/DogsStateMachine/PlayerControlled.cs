@@ -22,6 +22,7 @@ public class PlayerControlled : DogState
         Jump();
         Sprint();
         SurfaceCheck();
+        Debug.Log("Velocity: " + m_stateMachine.GetRigidbody().velocity.magnitude);
     }
     public void BasicMovement()
     {
@@ -73,8 +74,9 @@ public class PlayerControlled : DogState
         RaycastHit surfaceInfo;
 
         Ray checkSurfaceRay = new Ray(m_stateMachine.transform.position + (Vector3.up / 2), Vector3.down);
+      
        
-        if (Physics.SphereCast(checkSurfaceRay, 1, out surfaceInfo, m_stateMachine.GetDogData().rayLength))
+        if (Physics.SphereCast(checkSurfaceRay, 0.5f, out surfaceInfo, m_stateMachine.GetDogData().rayLength))
         {
             if (surfaceInfo.collider == false)
             {

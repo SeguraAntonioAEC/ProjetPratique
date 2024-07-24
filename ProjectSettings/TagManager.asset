@@ -7,6 +7,9 @@ TagManager:
   - Level Ground
   - Water
   - RallyPlatform
+  - Murphy
+  - Rally
+  - Cooper
   layers:
   - Default
   - TransparentFX
